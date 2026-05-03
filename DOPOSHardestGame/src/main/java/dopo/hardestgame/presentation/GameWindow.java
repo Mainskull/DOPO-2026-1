@@ -18,11 +18,27 @@ public class GameWindow extends JFrame {
         setVisible(true);
     }
 
-    public void showGameScreen() {
+    public void showModeSelectionScreen() {
         getContentPane().removeAll();
-        add(new GamePanel(this));
+        add(new ModeSelectionPanel(this));
         revalidate();
         repaint();
+    }
+
+    public void showPlayerSelectionScreen() {
+        getContentPane().removeAll();
+        add(new PlayerSelectionPanel(this));
+        revalidate();
+        repaint();
+    }
+
+    public void showGameScreen() {
+        getContentPane().removeAll();
+        GamePanel gamePanel = new GamePanel(this);
+        add(gamePanel);
+        revalidate();
+        repaint();
+        gamePanel.startGame();
     }
 
     public void closeApplication() {

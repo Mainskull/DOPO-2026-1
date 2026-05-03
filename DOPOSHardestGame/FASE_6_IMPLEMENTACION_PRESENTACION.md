@@ -38,8 +38,11 @@ dopo.hardestgame.presentation
 
 Clases principales:
 
+- `DOPOSHardestGameGUI`
 - `GameWindow`
 - `StartPanel`
+- `ModeSelectionPanel`
+- `PlayerSelectionPanel`
 - `GamePanel`
 - `BoardPanel`
 - `StatusPanel`
@@ -52,17 +55,47 @@ Clases principales:
 
 ## Pantalla inicial
 
-La pantalla inicial muestra:
+La pantalla inicial funciona como menu principal y muestra tres opciones:
 
-- Nombre del juego.
-- Version del proyecto.
-- Modalidad disponible.
-- Jugador disponible.
-- Nivel disponible.
-- Boton `Iniciar`.
-- Boton `Salir`.
+- `Jugar`
+- `Opciones`
+- `Creditos`
 
-Al presionar `Iniciar`, se crea la pantalla de juego.
+Solo `Jugar` esta activo en la Version 1.
+
+Si el usuario presiona `Opciones` o `Creditos`, se muestra un mensaje indicando que esa funcionalidad esta en construccion.
+
+---
+
+## Pantalla de seleccion de modo
+
+Despues de presionar `Jugar`, aparece una pantalla para escoger modo de juego.
+
+Opciones visibles:
+
+- `Player individual`
+- `Player vs Player`
+- `Player vs Machine`
+
+Solo `Player individual` esta activo en la Version 1.
+
+Las otras opciones muestran un mensaje de funcionalidad en construccion.
+
+---
+
+## Pantalla de seleccion de jugador
+
+Despues de escoger `Player individual`, aparece una pantalla para escoger el tipo de jugador.
+
+Opciones visibles:
+
+- `Cuadrado rojo`
+- `Cuadrado azul`
+- `Cuadrado verde`
+
+Solo `Cuadrado rojo` esta activo en la Version 1.
+
+Las otras opciones muestran un mensaje de funcionalidad en construccion.
 
 ---
 
@@ -149,8 +182,32 @@ La clase `MessageDialog` muestra:
 - Mensaje de victoria.
 - Mensaje de tiempo agotado.
 - Mensaje de partida terminada.
+- Mensaje de funcionalidad en construccion.
 
 Los mensajes aparecen cuando el dominio cambia a un estado final.
+
+Para las opciones que todavia no estan implementadas se usa `FeatureInConstructionException`, que se captura para mostrar un mensaje amigable sin cerrar el programa.
+
+---
+
+## Clase que activa el juego
+
+La clase que activa la interfaz grafica ahora es:
+
+```text
+dopo.hardestgame.presentation.DOPOSHardestGameGUI
+```
+
+Esta clase esta dentro de la capa de presentacion y tiene un `main` simple:
+
+```java
+public static void main(String[] args) {
+    GameWindow window = new GameWindow();
+    window.showStartScreen();
+}
+```
+
+Esta forma se usa para que el inicio del programa sea mas parecido a la forma basica vista en clase.
 
 ---
 
@@ -180,4 +237,5 @@ La Fase 6 se considera completa porque:
 - Los controles de pausa, reanudacion y terminacion existen.
 - El teclado permite mover al jugador.
 - Los mensajes finales estan implementados.
-
+- El menu principal, seleccion de modo y seleccion de jugador estan implementados.
+- Las opciones futuras muestran mensaje de construccion.

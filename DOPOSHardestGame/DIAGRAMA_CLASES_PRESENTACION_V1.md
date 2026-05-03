@@ -4,15 +4,42 @@
 classDiagram
     class GameWindow {
         -StartPanel startPanel
+        -ModeSelectionPanel modeSelectionPanel
+        -PlayerSelectionPanel playerSelectionPanel
         -GamePanel gamePanel
         +showStartScreen()
+        +showModeSelectionScreen()
+        +showPlayerSelectionScreen()
         +showGameScreen()
         +closeApplication()
     }
 
+    class DOPOSHardestGameGUI {
+        +main(String[] args)
+    }
+
     class StartPanel {
-        -JButton startButton
-        -JButton exitButton
+        -JButton playButton
+        -JButton optionsButton
+        -JButton creditsButton
+        +configureComponents()
+        +configureEvents()
+    }
+
+    class ModeSelectionPanel {
+        -JButton playerButton
+        -JButton playerVsPlayerButton
+        -JButton playerVsMachineButton
+        -JButton backButton
+        +configureComponents()
+        +configureEvents()
+    }
+
+    class PlayerSelectionPanel {
+        -JButton redPlayerButton
+        -JButton bluePlayerButton
+        -JButton greenPlayerButton
+        -JButton backButton
         +configureComponents()
         +configureEvents()
     }
@@ -74,6 +101,11 @@ classDiagram
         +showVictory(Game game)
         +showTimeOver(Game game)
         +showGameFinished()
+        +showInConstruction(Component parent, String featureName)
+    }
+
+    class FeatureInConstructionException {
+        +FeatureInConstructionException(String featureName)
     }
 
     class Game {
@@ -84,7 +116,10 @@ classDiagram
         <<domain enumeration>>
     }
 
+    DOPOSHardestGameGUI --> GameWindow
     GameWindow "1" *-- "1" StartPanel
+    GameWindow "1" *-- "1" ModeSelectionPanel
+    GameWindow "1" *-- "1" PlayerSelectionPanel
     GameWindow "1" *-- "1" GamePanel
     GamePanel "1" *-- "1" BoardPanel
     GamePanel "1" *-- "1" StatusPanel
@@ -98,5 +133,8 @@ classDiagram
     GameLoop --> Game
     GameLoop --> GamePanel
     GamePanel --> MessageDialog
+    StartPanel --> MessageDialog
+    ModeSelectionPanel --> MessageDialog
+    PlayerSelectionPanel --> MessageDialog
+    MessageDialog --> FeatureInConstructionException
 ```
-

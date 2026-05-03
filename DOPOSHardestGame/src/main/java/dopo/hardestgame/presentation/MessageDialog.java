@@ -2,6 +2,7 @@ package dopo.hardestgame.presentation;
 
 import dopo.hardestgame.domain.Game;
 
+import java.awt.Component;
 import javax.swing.JOptionPane;
 
 public final class MessageDialog {
@@ -33,5 +34,16 @@ public final class MessageDialog {
                 "La partida fue terminada.",
                 "Partida terminada",
                 JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static void showInConstruction(Component parent, String featureName) {
+        try {
+            throw new FeatureInConstructionException(featureName);
+        } catch (FeatureInConstructionException exception) {
+            JOptionPane.showMessageDialog(parent,
+                    exception.getMessage(),
+                    "En construccion",
+                    JOptionPane.WARNING_MESSAGE);
+        }
     }
 }

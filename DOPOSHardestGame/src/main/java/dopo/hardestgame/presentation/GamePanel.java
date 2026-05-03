@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 
 public class GamePanel extends JPanel {
+    private final GameWindow window;
     private final Game game;
     private final BoardPanel boardPanel;
     private final StatusPanel statusPanel;
@@ -15,6 +16,7 @@ public class GamePanel extends JPanel {
     private boolean finalMessageShown;
 
     public GamePanel(GameWindow window) {
+        this.window = window;
         setLayout(new BorderLayout());
         game = BasicLevelFactory.createVersionOneGame();
         boardPanel = new BoardPanel(game);
@@ -25,8 +27,6 @@ public class GamePanel extends JPanel {
         add(statusPanel, BorderLayout.NORTH);
         add(boardPanel, BorderLayout.CENTER);
         add(new ControlPanel(this), BorderLayout.SOUTH);
-
-        startGame();
     }
 
     public void startGame() {
@@ -48,8 +48,14 @@ public class GamePanel extends JPanel {
     }
 
     public void finishGame() {
+        if (finalMessageShown) {
+            return;
+        }
+        finalMessageShown = true;
         game.finish();
-        refresh();
+        gameLoop.stop();
+        MessageDialog.showGameFinished();
+        window.showStartScreen();
     }
 
     public void refresh() {
@@ -68,14 +74,12 @@ public class GamePanel extends JPanel {
             finalMessageShown = true;
             gameLoop.stop();
             MessageDialog.showVictory(game);
+            window.showStartScreen();
         } else if (state == GameState.LOST) {
             finalMessageShown = true;
             gameLoop.stop();
             MessageDialog.showTimeOver(game);
-        } else if (state == GameState.FINISHED) {
-            finalMessageShown = true;
-            gameLoop.stop();
-            MessageDialog.showGameFinished();
+            window.showStartScreen();
         }
     }
 }

@@ -5,6 +5,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ControlPanel extends JPanel {
     private final JButton pauseButton;
@@ -26,8 +28,22 @@ public class ControlPanel extends JPanel {
     }
 
     private void configureEvents(GamePanel gamePanel) {
-        pauseButton.addActionListener(event -> gamePanel.pauseGame());
-        resumeButton.addActionListener(event -> gamePanel.resumeGame());
-        finishButton.addActionListener(event -> gamePanel.finishGame());
+        pauseButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                gamePanel.pauseGame();
+            }
+        });
+
+        resumeButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                gamePanel.resumeGame();
+            }
+        });
+
+        finishButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                gamePanel.finishGame();
+            }
+        });
     }
 }

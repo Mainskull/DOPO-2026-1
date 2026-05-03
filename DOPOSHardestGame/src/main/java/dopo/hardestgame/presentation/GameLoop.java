@@ -3,6 +3,8 @@ package dopo.hardestgame.presentation;
 import dopo.hardestgame.domain.Game;
 
 import javax.swing.Timer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GameLoop {
     private static final int DELAY_MILLISECONDS = 16;
@@ -15,7 +17,11 @@ public class GameLoop {
     public GameLoop(Game game, GamePanel gamePanel) {
         this.game = game;
         this.gamePanel = gamePanel;
-        this.timer = new Timer(DELAY_MILLISECONDS, event -> tick());
+        this.timer = new Timer(DELAY_MILLISECONDS, new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                tick();
+            }
+        });
     }
 
     public void start() {
