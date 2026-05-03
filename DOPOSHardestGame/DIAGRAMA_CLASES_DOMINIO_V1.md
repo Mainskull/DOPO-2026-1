@@ -130,6 +130,11 @@ classDiagram
         +GameException(String message)
     }
 
+    class BasicLevelFactory {
+        +createVersionOneGame() Game
+        +createVersionOneLevel() Level
+    }
+
     class Direction {
         <<enumeration>>
         UP
@@ -160,6 +165,8 @@ classDiagram
     }
 
     Game "1" *-- "1" Level
+    BasicLevelFactory ..> Game
+    BasicLevelFactory ..> Level
     Game --> GameState
     Level "1" *-- "1" Board
     Level "1" *-- "1" Player
@@ -184,4 +191,3 @@ classDiagram
     SafeZone --> SafeZoneType
     GameException --|> Exception
 ```
-

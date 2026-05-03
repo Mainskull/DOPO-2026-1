@@ -10,7 +10,13 @@ public final class MessageDialog {
 
     public static void showVictory(Game game) {
         JOptionPane.showMessageDialog(null,
-                "Ganaste el nivel.\nMuertes: " + game.getDeaths(),
+                "Ganaste el nivel.\n"
+                        + "Monedas: "
+                        + game.getCurrentLevel().getCollectedCoinsCount()
+                        + " / "
+                        + game.getCurrentLevel().getTotalCoinsCount()
+                        + "\nMuertes: "
+                        + game.getDeaths(),
                 "Victoria",
                 JOptionPane.INFORMATION_MESSAGE);
     }
@@ -29,4 +35,3 @@ public final class MessageDialog {
                 JOptionPane.INFORMATION_MESSAGE);
     }
 }
-

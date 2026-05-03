@@ -20,10 +20,11 @@ public class Level {
             SafeZone finalSafeZone,
             GameTimer timer
     ) {
+        validateRequired(board, player, initialSafeZone, finalSafeZone, timer);
         this.board = board;
         this.player = player;
-        this.coins = List.copyOf(coins);
-        this.enemies = List.copyOf(enemies);
+        this.coins = List.copyOf(coins == null ? List.of() : coins);
+        this.enemies = List.copyOf(enemies == null ? List.of() : enemies);
         this.initialSafeZone = initialSafeZone;
         this.finalSafeZone = finalSafeZone;
         this.timer = timer;
@@ -31,8 +32,15 @@ public class Level {
     }
 
     public void update(double deltaTime) {
+        if (deltaTime < 0) {
+            throw new GameException("Delta time cannot be negative.");
+        }
         timer.tick(deltaTime);
-        enemies.forEach(enemy -> enemy.update(board, deltaTime));
+
+        for (Enemy enemy : enemies) {
+            enemy.update(board, deltaTime);
+        }
+
         collectCoins();
     }
 
@@ -42,17 +50,29 @@ public class Level {
     }
 
     public void collectCoins() {
-        coins.stream()
-                .filter(coin -> coin.canBeCollectedBy(player))
-                .forEach(Coin::collect);
+        for (Coin coin : coins) {
+            if (coin.canBeCollectedBy(player)) {
+                coin.collect();
+            }
+        }
     }
 
     public boolean hasPlayerCollidedWithEnemy() {
-        return enemies.stream().anyMatch(player::collidesWith);
+        for (Enemy enemy : enemies) {
+            if (player.collidesWith(enemy)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean areAllCoinsCollected() {
-        return coins.stream().allMatch(Coin::isCollected);
+        for (Coin coin : coins) {
+            if (!coin.isCollected()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean isPlayerInFinalZone() {
@@ -64,7 +84,15 @@ public class Level {
     }
 
     public int getCollectedCoinsCount() {
-        return (int) coins.stream().filter(Coin::isCollected).count();
+        int collectedCoins = 0;
+
+        for (Coin coin : coins) {
+            if (coin.isCollected()) {
+                collectedCoins++;
+            }
+        }
+
+        return collectedCoins;
     }
 
     public int getTotalCoinsCount() {
@@ -98,5 +126,28 @@ public class Level {
     public GameTimer getTimer() {
         return timer;
     }
-}
 
+    private void validateRequired(
+            Board board,
+            Player player,
+            SafeZone initialSafeZone,
+            SafeZone finalSafeZone,
+            GameTimer timer
+    ) {
+        if (board == null) {
+            throw new GameException("Level requires a board.");
+        }
+        if (player == null) {
+            throw new GameException("Level requires a player.");
+        }
+        if (initialSafeZone == null || initialSafeZone.getType() != SafeZoneType.INITIAL) {
+            throw new GameException("Level requires an initial safe zone.");
+        }
+        if (finalSafeZone == null || finalSafeZone.getType() != SafeZoneType.FINAL) {
+            throw new GameException("Level requires a final safe zone.");
+        }
+        if (timer == null) {
+            throw new GameException("Level requires a timer.");
+        }
+    }
+}

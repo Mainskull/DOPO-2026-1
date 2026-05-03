@@ -2,8 +2,12 @@ package dopo.hardestgame.presentation;
 
 import dopo.hardestgame.domain.Game;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 
 public class StatusPanel extends JPanel {
@@ -13,9 +17,12 @@ public class StatusPanel extends JPanel {
 
     public StatusPanel() {
         setLayout(new GridLayout(1, 3));
-        timeLabel = new JLabel("Tiempo: 0");
-        deathsLabel = new JLabel("Muertes: 0");
-        coinsLabel = new JLabel("Monedas: 0 / 0");
+        setBackground(Color.BLACK);
+        setBorder(BorderFactory.createEmptyBorder(8, 12, 8, 12));
+
+        timeLabel = createLabel("Tiempo: 0");
+        deathsLabel = createLabel("Muertes: 0");
+        coinsLabel = createLabel("Monedas: 0 / 0");
 
         add(timeLabel);
         add(deathsLabel);
@@ -30,5 +37,11 @@ public class StatusPanel extends JPanel {
                 + " / "
                 + game.getCurrentLevel().getTotalCoinsCount());
     }
-}
 
+    private JLabel createLabel(String text) {
+        JLabel label = new JLabel(text, SwingConstants.CENTER);
+        label.setForeground(Color.WHITE);
+        label.setFont(new Font("Arial", Font.BOLD, 16));
+        return label;
+    }
+}

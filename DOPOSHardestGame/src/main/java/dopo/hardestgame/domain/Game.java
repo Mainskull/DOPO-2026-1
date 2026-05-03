@@ -14,7 +14,10 @@ public class Game {
     }
 
     public void start() {
-        state = GameState.RUNNING;
+        if (state == GameState.READY || state == GameState.PAUSED) {
+            state = GameState.RUNNING;
+            evaluateRules();
+        }
     }
 
     public void pause() {
@@ -39,7 +42,10 @@ public class Game {
         }
 
         currentLevel.update(deltaTime);
+        evaluateRules();
+    }
 
+    private void evaluateRules() {
         if (currentLevel.hasPlayerCollidedWithEnemy()) {
             registerDeath();
             currentLevel.respawnPlayer();
@@ -55,6 +61,7 @@ public class Game {
     public void movePlayer(Direction direction) {
         if (state == GameState.RUNNING) {
             currentLevel.movePlayer(direction);
+            evaluateRules();
         }
     }
 
@@ -82,4 +89,3 @@ public class Game {
         return deaths;
     }
 }
-

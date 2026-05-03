@@ -425,18 +425,18 @@ La entrega puede ser presentada y defendida explicando claramente que se hizo, c
 - [x] Diagrama de clases del dominio creado.
 - [x] Maqueta de interfaz creada.
 - [x] Proyecto Java configurado.
-- [ ] Capa de dominio implementada.
-- [ ] Capa de presentacion implementada.
-- [ ] Movimiento del jugador implementado.
-- [ ] Monedas implementadas.
-- [ ] Enemigo azul basico implementado.
-- [ ] Zonas seguras implementadas.
-- [ ] Tiempo limite implementado.
-- [ ] Contador de muertes implementado.
-- [ ] Contador de monedas implementado.
-- [ ] Pausa implementada.
-- [ ] Terminar juego implementado.
-- [ ] Victoria implementada.
+- [x] Capa de dominio implementada.
+- [x] Capa de presentacion implementada.
+- [x] Movimiento del jugador implementado.
+- [x] Monedas implementadas.
+- [x] Enemigo azul basico implementado.
+- [x] Zonas seguras implementadas.
+- [x] Tiempo limite implementado.
+- [x] Contador de muertes implementado.
+- [x] Contador de monedas implementado.
+- [x] Pausa implementada.
+- [x] Terminar juego implementado.
+- [x] Victoria implementada.
 - [ ] Pruebas JUnit creadas.
 - [ ] Diagramas de secuencia creados.
 - [ ] Revision final realizada.

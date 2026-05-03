@@ -35,4 +35,3 @@ public class GameLoop {
         gamePanel.refresh();
     }
 }
-

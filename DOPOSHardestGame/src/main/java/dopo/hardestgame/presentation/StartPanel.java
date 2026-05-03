@@ -5,6 +5,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 
 public class StartPanel extends JPanel {
@@ -20,10 +22,14 @@ public class StartPanel extends JPanel {
     }
 
     private void configureComponents() {
+        setBackground(new Color(238, 238, 238));
         JLabel title = new JLabel("The DOPO Hardest Game - Version 1", SwingConstants.CENTER);
+        title.setFont(new Font("Arial", Font.BOLD, 28));
         JLabel description = new JLabel("Modo Player | Cuadrado rojo | Nivel basico", SwingConstants.CENTER);
+        description.setFont(new Font("Arial", Font.PLAIN, 18));
 
         JPanel buttons = new JPanel(new GridLayout(1, 2, 12, 0));
+        buttons.setBackground(new Color(238, 238, 238));
         buttons.add(startButton);
         buttons.add(exitButton);
 
@@ -37,4 +43,3 @@ public class StartPanel extends JPanel {
         exitButton.addActionListener(event -> window.closeApplication());
     }
 }
-

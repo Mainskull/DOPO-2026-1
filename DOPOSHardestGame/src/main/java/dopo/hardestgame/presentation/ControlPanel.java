@@ -1,7 +1,9 @@
 package dopo.hardestgame.presentation;
 
 import javax.swing.JButton;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import java.awt.Color;
 import java.awt.GridLayout;
 
 public class ControlPanel extends JPanel {
@@ -11,6 +13,8 @@ public class ControlPanel extends JPanel {
 
     public ControlPanel(GamePanel gamePanel) {
         setLayout(new GridLayout(1, 3, 8, 0));
+        setBorder(BorderFactory.createEmptyBorder(8, 12, 8, 12));
+        setBackground(new Color(225, 225, 225));
         pauseButton = new JButton("Pausar");
         resumeButton = new JButton("Reanudar");
         finishButton = new JButton("Terminar");
@@ -27,4 +31,3 @@ public class ControlPanel extends JPanel {
         finishButton.addActionListener(event -> gamePanel.finishGame());
     }
 }
-

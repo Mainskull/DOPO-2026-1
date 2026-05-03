@@ -1,7 +1,7 @@
 package dopo.hardestgame.domain;
 
 public class BasicBlueEnemy extends Enemy {
-    public static final double DEFAULT_SPEED = 4.0;
+    public static final double DEFAULT_SPEED = 120.0;
     public static final Size DEFAULT_SIZE = new Size(18, 18);
 
     public BasicBlueEnemy(Position position, Direction direction) {
@@ -10,7 +10,7 @@ public class BasicBlueEnemy extends Enemy {
 
     @Override
     public void update(Board board, double deltaTime) {
-        move(getDirection(), board);
+        move(getDirection(), board, deltaTime);
         bounceIfNeeded(board);
     }
 
@@ -32,4 +32,3 @@ public class BasicBlueEnemy extends Enemy {
         }
     }
 }
-

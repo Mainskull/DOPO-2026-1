@@ -29,4 +29,3 @@ public abstract class Player extends MovableEntity {
         return baseSpeed;
     }
 }
-
