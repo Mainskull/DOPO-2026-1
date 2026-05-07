@@ -30,7 +30,7 @@ public class StartPanel extends JPanel {
 
     private void configureComponents() {
         setBackground(new Color(238, 238, 238));
-        JLabel title = new JLabel("The DOPO Hardest Game - Version 1", SwingConstants.CENTER);
+        JLabel title = new JLabel("The DOPO Hardest Game", SwingConstants.CENTER);
         title.setFont(new Font("Arial", Font.BOLD, 28));
         title.setBorder(BorderFactory.createEmptyBorder(40, 0, 20, 0));
 
