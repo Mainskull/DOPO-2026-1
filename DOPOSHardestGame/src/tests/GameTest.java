@@ -1,4 +1,4 @@
-package test;
+package tests;
 
 import domain.BasicBlueEnemy;
 import domain.Board;
@@ -128,4 +128,3 @@ class GameTest {
         );
     }
 }
-
