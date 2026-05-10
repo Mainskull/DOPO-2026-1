@@ -14,11 +14,22 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * clase que representa el menu principal del juego
+ * 
+ * @author Daniel Valero, Juan Nieto
+ * @version 10.05.2026
+ */
 public class StartPanel extends JPanel {
     private final JButton playButton;
     private final JButton optionsButton;
     private final JButton creditsButton;
 
+    /**
+     * construye el menu principal
+     * 
+     * @param window ventana principal que permite cambiar de pantalla
+     */
     public StartPanel(GameWindow window) {
         setLayout(new BorderLayout());
         playButton = new JButton("Jugar");
@@ -28,6 +39,9 @@ public class StartPanel extends JPanel {
         configureEvents(window);
     }
 
+    /**
+     * configura los componentes visuales del menu principal
+     */
     private void configureComponents() {
         setBackground(new Color(238, 238, 238));
         JLabel title = new JLabel("The DOPO Hardest Game", SwingConstants.CENTER);
@@ -58,30 +72,54 @@ public class StartPanel extends JPanel {
         add(centerPanel, BorderLayout.CENTER);
     }
 
+    /**
+     * configura las acciones de los botones del menu principal
+     * 
+     * @param window ventana principal que permite navegar entre pantallas
+     */
     private void configureEvents(GameWindow window) {
         playButton.addActionListener(new ActionListener() {
+            /**
+             * muestra la seleccion de modo cuando se oprime jugar
+             * 
+             * @param event evento generado por el boton
+             */
             public void actionPerformed(ActionEvent event) {
                 window.showModeSelectionScreen();
             }
         });
 
         optionsButton.addActionListener(new ActionListener() {
+            /**
+             * muestra el mensaje de construccion para opciones
+             * 
+             * @param event evento generado por el boton
+             */
             public void actionPerformed(ActionEvent event) {
                 MessageDialog.showInConstruction(StartPanel.this, "Opciones");
             }
         });
 
         creditsButton.addActionListener(new ActionListener() {
+            /**
+             * muestra el mensaje de construccion para creditos
+             * 
+             * @param event evento generado por el boton
+             */
             public void actionPerformed(ActionEvent event) {
                 MessageDialog.showInConstruction(StartPanel.this, "Creditos");
             }
         });
     }
 
+    /**
+     * configura el estilo de un boton del menu
+     * 
+     * @param button boton que se desea configurar
+     */
     private void configureMenuButton(JButton button) {
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setPreferredSize(new Dimension(220, 42));
         button.setFont(new Font("Arial", Font.BOLD, 16));
     }
 }
-

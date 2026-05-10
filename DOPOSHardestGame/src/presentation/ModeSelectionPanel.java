@@ -12,12 +12,23 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * clase que representa la pantalla para seleccionar el modo de juego
+ * 
+ * @author Daniel Valero, Juan Nieto
+ * @version 10.05.2026
+ */
 public class ModeSelectionPanel extends JPanel {
     private final JButton playerButton;
     private final JButton playerVsPlayerButton;
     private final JButton playerVsMachineButton;
     private final JButton backButton;
 
+    /**
+     * construye el panel de seleccion de modo
+     * 
+     * @param window ventana principal que permite cambiar de pantalla
+     */
     public ModeSelectionPanel(GameWindow window) {
         setLayout(new BorderLayout());
         playerButton = new JButton("Player individual");
@@ -28,6 +39,9 @@ public class ModeSelectionPanel extends JPanel {
         configureEvents(window);
     }
 
+    /**
+     * configura los componentes visuales de la seleccion de modo
+     */
     private void configureComponents() {
         setBackground(new Color(238, 238, 238));
 
@@ -47,30 +61,54 @@ public class ModeSelectionPanel extends JPanel {
         add(buttons, BorderLayout.CENTER);
     }
 
+    /**
+     * configura las acciones de los botones de seleccion de modo
+     * 
+     * @param window ventana principal que permite navegar entre pantallas
+     */
     private void configureEvents(GameWindow window) {
         playerButton.addActionListener(new ActionListener() {
+            /**
+             * muestra la seleccion de jugador para el modo individual
+             * 
+             * @param event evento generado por el boton
+             */
             public void actionPerformed(ActionEvent event) {
                 window.showPlayerSelectionScreen();
             }
         });
 
         playerVsPlayerButton.addActionListener(new ActionListener() {
+            /**
+             * muestra el mensaje de construccion para player vs player
+             * 
+             * @param event evento generado por el boton
+             */
             public void actionPerformed(ActionEvent event) {
                 MessageDialog.showInConstruction(ModeSelectionPanel.this, "Player vs Player");
             }
         });
 
         playerVsMachineButton.addActionListener(new ActionListener() {
+            /**
+             * muestra el mensaje de construccion para player vs machine
+             * 
+             * @param event evento generado por el boton
+             */
             public void actionPerformed(ActionEvent event) {
                 MessageDialog.showInConstruction(ModeSelectionPanel.this, "Player vs Machine");
             }
         });
 
         backButton.addActionListener(new ActionListener() {
+            /**
+             * vuelve al menu principal
+             * 
+             * @param event evento generado por el boton
+             */
             public void actionPerformed(ActionEvent event) {
                 window.showStartScreen();
             }
         });
     }
 }
-

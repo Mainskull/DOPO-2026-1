@@ -12,12 +12,23 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * clase que representa la pantalla para seleccionar el jugador
+ * 
+ * @author Daniel Valero, Juan Nieto
+ * @version 10.05.2026
+ */
 public class PlayerSelectionPanel extends JPanel {
     private final JButton redPlayerButton;
     private final JButton bluePlayerButton;
     private final JButton greenPlayerButton;
     private final JButton backButton;
 
+    /**
+     * construye el panel de seleccion de jugador
+     * 
+     * @param window ventana principal que permite cambiar de pantalla
+     */
     public PlayerSelectionPanel(GameWindow window) {
         setLayout(new BorderLayout());
         redPlayerButton = new JButton("Cuadrado rojo");
@@ -28,6 +39,9 @@ public class PlayerSelectionPanel extends JPanel {
         configureEvents(window);
     }
 
+    /**
+     * configura los componentes visuales de la seleccion de jugador
+     */
     private void configureComponents() {
         setBackground(new Color(238, 238, 238));
 
@@ -47,30 +61,54 @@ public class PlayerSelectionPanel extends JPanel {
         add(buttons, BorderLayout.CENTER);
     }
 
+    /**
+     * configura las acciones de los botones de seleccion de jugador
+     * 
+     * @param window ventana principal que permite navegar entre pantallas
+     */
     private void configureEvents(GameWindow window) {
         redPlayerButton.addActionListener(new ActionListener() {
+            /**
+             * inicia el juego usando el cuadrado rojo
+             * 
+             * @param event evento generado por el boton
+             */
             public void actionPerformed(ActionEvent event) {
                 window.showGameScreen();
             }
         });
 
         bluePlayerButton.addActionListener(new ActionListener() {
+            /**
+             * muestra el mensaje de construccion para el cuadrado azul
+             * 
+             * @param event evento generado por el boton
+             */
             public void actionPerformed(ActionEvent event) {
                 MessageDialog.showInConstruction(PlayerSelectionPanel.this, "Cuadrado azul");
             }
         });
 
         greenPlayerButton.addActionListener(new ActionListener() {
+            /**
+             * muestra el mensaje de construccion para el cuadrado verde
+             * 
+             * @param event evento generado por el boton
+             */
             public void actionPerformed(ActionEvent event) {
                 MessageDialog.showInConstruction(PlayerSelectionPanel.this, "Cuadrado verde");
             }
         });
 
         backButton.addActionListener(new ActionListener() {
+            /**
+             * vuelve a la seleccion de modo de juego
+             * 
+             * @param event evento generado por el boton
+             */
             public void actionPerformed(ActionEvent event) {
                 window.showModeSelectionScreen();
             }
         });
     }
 }
-

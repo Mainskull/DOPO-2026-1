@@ -2,14 +2,33 @@ package domain;
 
 import java.util.ArrayList;
 
+/**
+ * clase que crea el nivel basico de la primera version del juego
+ * 
+ * @author Daniel Valero, Juan Nieto
+ * @version 10.05.2026
+ */
 public final class BasicLevelFactory {
+    /**
+     * constructor privado para evitar crear objetos de esta clase
+     */
     private BasicLevelFactory() {
     }
 
+    /**
+     * crea una partida de la version uno con el nivel basico
+     * 
+     * @return juego listo con el nivel basico
+     */
     public static Game createVersionOneGame() {
         return new Game(createVersionOneLevel());
     }
 
+    /**
+     * crea el nivel basico con jugador, monedas, enemigos y zonas
+     * 
+     * @return nivel basico de la primera version
+     */
     public static Level createVersionOneLevel() {
         Board board = new Board(800, 500);
         SafeZone initialZone = new SafeZone(new Position(20, 180), new Size(90, 140), SafeZoneType.INITIAL);
@@ -38,4 +57,3 @@ public final class BasicLevelFactory {
         );
     }
 }
-
