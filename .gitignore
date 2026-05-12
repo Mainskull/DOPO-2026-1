@@ -1,3 +1,6 @@
+#astah lock file
+*.asta.lock
+
 # Compiled class file
 *.class
 
