@@ -1,0 +1,28 @@
+1. ¿Cuáles fueron los mini-ciclos definidos? Justifíquenlos.
+Se definieron 4 mini-ciclos basados en las metodologías MDD y BDD:
+
+Mini-ciclo 1 - Modelado y estructura base: Diseño del diagrama de clases del dominio, definición de la jerarquía de entidades y relaciones principales(MDD).
+Mini-ciclo 2 - Pruebas: Definición de comportamientos esperados mediante pruebas unitarias (BDD).
+Mini-ciclo 3 - Implementación del dominio: Desarrollo de las clases del dominio (entidades, nivel, juego, temporizador) con sus excepciones. porque el dominio es el núcleo funcional del proyecto y debe estar sólido antes de construir sobre él.
+Mini-ciclo 4 - presentacion: construcción de la interfaz gráfica conectada al dominio. para dar una forma de interaccion y entendimiento del juego al usuario
+
+2. ¿Cuál es el estado actual del proyecto en términos de mini-ciclos? ¿Por qué?
+Los 4 mini-ciclos están completados a nivel de MVP. El dominio está implementado y funcional, las pruebas unitarias cubren los comportamientos principales del juego, y la interfaz gráfica permite jugar el nivel base. Sin embargo, varias funcionalidades planteadas en el diseño inicial (otros personajes, modos de juego, niveles adicionales) quedaron marcadas como "en construcción", por lo que el mini-ciclo 3 está parcialmente cerrado.
+
+3. ¿Cuál fue el tiempo total invertido por cada uno?
+18 horas por persona invertidas en el proyecto.
+
+4. ¿Cuál consideran fue el mayor logro? ¿Por qué?
+Lograr un MVP funcional y formalmente estructurado. El juego corre, las reglas funcionan correctamente, las pruebas pasan y la arquitectura en capas (dominio y presentación) está establecida. Esto representa una base sólida y entregable dentro del tiempo disponible.
+
+5. ¿Cuál consideran que fue el mayor problema técnico? ¿Qué hicieron para resolverlo?
+El mayor problema fue definir correctamente la interrelación entre las clases del dominio: qué debía conocer cada clase, qué responsabilidades le correspondían y cómo debía estructurarse el diseño para ser coherente y extensible. Se resolvió consultando notas de clase y revisando el diseño iterativamente hasta lograr una jerarquía clara y funcional.
+
+6. ¿Qué hicieron bien como equipo? ¿Qué se comprometen a hacer para mejorar los resultados?
+Se trabajó bien la división de responsabilidades y se mantuvo comunicación constante durante el desarrollo mediante pair programming. Como compromiso de mejora, nos compormetemos a definir con más anticipación los criterios de aceptación de cada mini-ciclo para evitar funcionalidades incompletas.
+
+7. ¿Cuál fue la práctica XP más útil? ¿Por qué?
+Collective Ownership, ya que esto nos permitio lograr por el lado de cada integrante, un buen dominio del codigo, diseño y pruebas.
+
+8. ¿Qué referencias usaron?
+Oracle. (2025). Java SE 21 API Specification. Oracle Corporation. https://docs.oracle.com/en/java/docs/
